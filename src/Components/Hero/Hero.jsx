@@ -14,34 +14,34 @@ import { Tasks } from "./Tasks";
 
 
 function Hero() {
-  const [task, addTask] = useState({ cart: [] });
-  const [inputValue, setInputValue] = useState("");
+  const [task, addTask] = useState({ store: [] });
+  const [input, setInput] = useState("");
 
-  const saveInput = (e) => {
-    setInputValue(e.target.value);
+  const storeInput = (e) => {
+    setInput(e.target.value);
   };
 
   const addNewItem = () => {
-    addTask((existingCartList) => ({
-      cart: [...existingCartList.cart, inputValue]
+    addTask((currentCart) => ({
+      store: [...currentCart.store, input]
     }));
-    setInputValue("");
+    setInput("");
   };
   
   return (
     <HeroContainer>
       <HeroLabel htmlFor="todoinput">What do you have to do today?</HeroLabel>
       <HeroInputContainer>
-        <HeroInput id="todoinput" type="input" value={inputValue} onChange={saveInput} />
+        <HeroInput id="todoinput" type="input" value={input} onChange={storeInput} />
         <SubmitButton type="submit"  onClick={addNewItem}>Add Task</SubmitButton>
       </HeroInputContainer>
       <HeroElements>
         <HeroListContainer>
          
-          {task.cart.map((element, index)=>{
+          {task.store.map((element, index)=>{
             return(
               <div key={index}>
-             <HeroListElement>{element}</HeroListElement>
+            <HeroListElement> {element}</HeroListElement>
              </div>
             )
           })}
@@ -50,5 +50,5 @@ function Hero() {
     </HeroContainer>
   );
 }
-
+{/* <HeroInput type='checkbox'/> */}
 export default Hero;

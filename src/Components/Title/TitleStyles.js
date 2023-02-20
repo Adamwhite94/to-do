@@ -6,11 +6,11 @@ align-items: center;
 justify-content: center;
 `;
 const TitleElements = styled.div`
-padding-top: 8rem;
+padding-top: 2rem;
 `;
 const TitleHeading = styled.h1`
-font-size: 5rem;
-height: 4rem;
+font-size: 7rem;
+height: 3rem;
 `;
 
 export {
