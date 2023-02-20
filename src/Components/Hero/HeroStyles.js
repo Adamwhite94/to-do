@@ -42,6 +42,15 @@ color: #111111;
 font-weight: 1000;
 font-size: 1.3rem;
 
+
+&:hover{
+  background-color: red;
+  color:#fff;
+  cursor:pointer
+}
+
+
+
 `;
 const HeroLabel = styled.label`
   color: #F2F3F5;

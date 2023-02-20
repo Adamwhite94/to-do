@@ -27,6 +27,12 @@ function Hero() {
     }));
     setInput("");
   };
+
+  const deleteTodo = (id) => {
+    console.log("id" + id);
+    const filteredItem = task.store.filter(todo => todo.id !== id);
+    addTask(filteredItem);
+  }
   
   return (
     <HeroContainer>
@@ -38,10 +44,10 @@ function Hero() {
       <HeroElements>
         <HeroListContainer>
          
-          {task.store.map((element, index)=>{
+          {task.store?.map((element, index)=>{
             return(
               <div key={index}>
-            <HeroListElement> {element}</HeroListElement>
+            <HeroListElement onClick={()=>deleteTodo(index)}>{element}</HeroListElement>
              </div>
             )
           })}
@@ -50,5 +56,5 @@ function Hero() {
     </HeroContainer>
   );
 }
-{/* <HeroInput type='checkbox'/> */}
+
 export default Hero;
