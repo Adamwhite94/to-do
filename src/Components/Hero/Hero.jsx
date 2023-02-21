@@ -28,10 +28,9 @@ function Hero() {
     setInput("");
   };
 
-  const deleteTodo = (id) => {
-    console.log("id" + id);
-    const filteredItem = task.store.filter(todo => todo.id !== id);
-    addTask(filteredItem);
+  const deleteTodo = (index) => {
+    const newList = task.store.filter(item=> item.index!== index);
+    addTask(newList);
   }
   
   return (
