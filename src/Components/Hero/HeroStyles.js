@@ -1,4 +1,16 @@
 import styled from "styled-components";
+import { device } from "../../Breakpoints/Breakpoints";
+
+// @media only screen and (${device.mobileMSmallerBP}) and (${device.mobileM}) {
+// }
+// @media only screen and (${device.mobileLSmallerBP}) and (${device.mobileL}) {
+// }
+// @media only screen and (${device.mobileLSmallerBP}) and (${device.pixelBP}) {
+// }
+// @media only screen and (${device.tabletSmallerBP}) and (${device.tablet}) {
+// }
+// @media only screen and (${device.laptopSmallerBP}) and (${device.laptop}) {
+// }
 
 const HeroContainer = styled.div`
 display:flex;
@@ -15,6 +27,15 @@ align-items: center;
 width: 30rem;
 padding: 2rem;
 border-radius: 1rem;
+@media only screen and (${device.mobileMSmallerBP}) and (${device.mobileM}) {
+
+width: 20rem;
+}
+@media only screen and (${device.mobileLSmallerBP}) and (${device.mobileL}) {
+  
+width: 20rem;
+}
+
 `;
 const HeroInput = styled.input`
 width: 30rem;
@@ -22,7 +43,14 @@ height: 3rem;
 border: 1px solid orange;
 margin-bottom: 1rem;
 font-size: 2rem;
+@media only screen and (${device.mobileMSmallerBP}) and (${device.mobileM}) {
 
+ width: 20rem;
+}
+@media only screen and (${device.mobileLSmallerBP}) and (${device.mobileL}) {
+  
+  width: 20rem;
+  }
 `;
 const HeroListContainer = styled.ul`
 display:flex;
@@ -57,6 +85,12 @@ const HeroLabel = styled.label`
   padding-bottom: 0.9rem;
   font-size: 2rem;
   font-family: 'Mynerve', cursive;
+  @media only screen and (${device.mobileMSmallerBP}) and (${device.mobileM}) {
+  font-size: 1.5rem;
+}
+@media only screen and (${device.mobileLSmallerBP}) and (${device.mobileL}) {
+  font-size: 2rem;
+}
 `;
 
 const SubmitButton = styled.button`
@@ -74,7 +108,35 @@ cursor:pointer;
   color: #111111;
 }
 `;
-const HeroInputContainer = styled.div``;
+const HeroInputContainer = styled.form`
+@media only screen and (${device.mobileMSmallerBP}) and (${device.mobileM}) {
+ 
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+@media only screen and (${device.mobileLSmallerBP}) and (${device.mobileL}) {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+`;
+
+const TitleHeading = styled.h1`
+font-size: 7rem;
+height: 3rem;
+@media only screen and (${device.mobileMSmallerBP}) and (${device.mobileM}) {
+  font-size: 3rem;
+  height: 1rem;
+}
+
+@media only screen and (${device.mobileLSmallerBP}) and (${device.mobileL}) {
+  font-size: 3rem;
+  height: 1rem;
+}
+`;
 
 export {
     HeroContainer,
@@ -84,5 +146,6 @@ export {
     HeroListElement,
     HeroLabel,
     SubmitButton,
-    HeroInputContainer
+    HeroInputContainer,
+    TitleHeading
 }

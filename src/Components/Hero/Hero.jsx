@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import {
   HeroContainer,
@@ -9,46 +9,56 @@ import {
   HeroLabel,
   SubmitButton,
   HeroInputContainer,
+  TitleHeading,
 } from "./HeroStyles";
-import { Tasks } from "./Tasks";
-
+import taskStore from "../../Store";
 
 function Hero() {
-  const [task, addTask] = useState({ store: [] });
-  const [input, setInput] = useState("");
+  const addTask = taskStore((state) => state.addTask);
+  const [task, setTask] = useState("");
 
-  const storeInput = (e) => {
-    setInput(e.target.value);
+  const { tasks, deleteTask, toggleTask } = taskStore((state) => {
+    return {
+      tasks: state.tasks,
+      deleteTask: state.deleteTask,
+      toggleTask: state.toggleTask,
+    };
+  });
+  const uniqueId = () => parseInt(Date.now() * Math.random()).toString();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    addTask(uniqueId, task);
+    setTask("");
   };
 
-  const addNewItem = () => {
-    addTask((currentCart) => ({
-      store: [...currentCart.store, input]
-    }));
-    setInput("");
-  };
 
-  const deleteTodo = (index) => {
-    const newList = task.store.filter(item=> item.index!== index);
-    addTask(newList);
-  }
-  
   return (
     <HeroContainer>
+      <TitleHeading>Now Or Never</TitleHeading>
       <HeroLabel htmlFor="todoinput">What do you have to do today?</HeroLabel>
-      <HeroInputContainer>
-        <HeroInput id="todoinput" type="input" value={input} onChange={storeInput} />
-        <SubmitButton type="submit"  onClick={addNewItem}>Add Task</SubmitButton>
+      <HeroInputContainer onSubmit={submitHandler}>
+        <HeroInput
+          type="text"
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+        />
+        <SubmitButton type="submit">Add Task</SubmitButton>
       </HeroInputContainer>
       <HeroElements>
         <HeroListContainer>
-         
-          {task.store?.map((element, index)=>{
-            return(
-              <div key={index}>
-            <HeroListElement onClick={()=>deleteTodo(index)}>{element}</HeroListElement>
-             </div>
-            )
+          {tasks.map((task) => {
+            return (
+              <div key={task.id}>
+                <HeroListElement
+                  style={{
+                    textDecoration: task.completed ? "line-through" : "none",
+                  }}
+                  onClick={() => toggleTask(task.id)}
+                >
+                  {task.text}
+                </HeroListElement>
+              </div>
+            );
           })}
         </HeroListContainer>
       </HeroElements>
