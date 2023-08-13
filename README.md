@@ -1,5 +1,3 @@
-Need to rework how the list is stored.
+Working to-do list using zustand!
 
-Currently the list of todos all get deleted if one is deletd.
-
-Will fix soon.
+Hope you enjoy!
